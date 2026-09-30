@@ -1,0 +1,454 @@
+/* =========================================================
+   RECRUITMENT MANAGEMENT SYSTEM
+   LABORATORY ACTIVITY 20
+   APPLICANT REPORTS
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE INTRO
+   ========================================================= */
+
+.applicant-report-intro {
+    align-items: flex-start;
+}
+
+
+.report-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   SUMMARY
+   ========================================================= */
+
+.applicant-report-summary {
+    display: grid;
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-bottom: 22px;
+}
+
+
+.applicant-report-summary .report-stat {
+    padding: 20px;
+    min-width: 0;
+}
+
+
+.report-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+.report-stat small {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.72;
+}
+
+
+.report-stat strong {
+    font-size: 30px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+
+.report-stat span {
+    font-size: 13px;
+    opacity: 0.68;
+}
+
+
+/* =========================================================
+   FILTER TOOLBAR
+   ========================================================= */
+
+.applicant-report-toolbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+
+    padding: 18px;
+
+    margin-bottom: 22px;
+}
+
+
+.report-search,
+.report-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+
+.report-search {
+    flex: 1;
+    min-width: 240px;
+}
+
+
+.report-filter {
+    width: 190px;
+}
+
+
+.report-search label,
+.report-filter label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+
+.report-search input,
+.report-filter select {
+    width: 100%;
+    min-height: 42px;
+
+    padding: 10px 12px;
+
+    border: 1px solid rgba(80, 100, 130, 0.18);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.76);
+
+    font: inherit;
+    color: inherit;
+
+    outline: none;
+}
+
+
+.report-search input:focus,
+.report-filter select:focus {
+    border-color: rgba(45, 108, 220, 0.45);
+}
+
+
+/* =========================================================
+   REPORT SECTIONS
+   ========================================================= */
+
+.applicant-report-section {
+    margin-bottom: 22px;
+    overflow: hidden;
+}
+
+
+.report-section-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 22px 22px 16px;
+}
+
+
+.report-section-header h3 {
+    margin: 3px 0 6px;
+}
+
+
+.report-section-header p {
+    margin: 0;
+}
+
+
+.report-count {
+    flex-shrink: 0;
+
+    padding: 7px 10px;
+
+    border-radius: 999px;
+
+    background: rgba(45, 108, 220, 0.08);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.applicant-report-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+.applicant-report-table-wrap table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+}
+
+
+.applicant-report-table-wrap th,
+.applicant-report-table-wrap td {
+    padding: 14px 16px;
+
+    text-align: left;
+    vertical-align: middle;
+
+    border-bottom: 1px solid rgba(80, 100, 130, 0.10);
+
+    white-space: nowrap;
+}
+
+
+.applicant-report-table-wrap th {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    opacity: 0.68;
+}
+
+
+.applicant-report-table-wrap td {
+    font-size: 13px;
+}
+
+
+.applicant-report-table-wrap tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+
+.applicant-report-table-wrap tbody tr:hover {
+    background: rgba(45, 108, 220, 0.035);
+}
+
+
+.applicant-report-table-wrap td strong {
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   EMPTY TABLE
+   ========================================================= */
+
+.applicant-report-table-wrap .table-empty {
+    padding: 34px 20px;
+
+    text-align: center;
+
+    opacity: 0.65;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+   ========================================================= */
+
+.applicant-report-table-wrap .status-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .applicant-report-summary {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .applicant-report-summary {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .applicant-report-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .report-filter {
+        width: 100%;
+    }
+
+
+    .report-section-header {
+        flex-direction: column;
+    }
+
+
+    .report-count {
+        align-self: flex-start;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .applicant-report-summary {
+        grid-template-columns: 1fr;
+    }
+
+
+    .report-actions {
+        width: 100%;
+    }
+
+
+    .report-actions .btn {
+        flex: 1;
+    }
+
+
+    .report-stat strong {
+        font-size: 26px;
+    }
+
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+
+    @page {
+        size: landscape;
+        margin: 12mm;
+    }
+
+
+    body {
+        background: #ffffff !important;
+    }
+
+
+    #appSidebar,
+    #appTopbar,
+    #mobileSidebarOverlay,
+    .applicant-report-toolbar,
+    .report-actions {
+        display: none !important;
+    }
+
+
+    .app-main {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+
+    .page-content {
+        padding: 0 !important;
+    }
+
+
+    .applicant-report-intro {
+        display: block !important;
+        margin-bottom: 18px;
+    }
+
+
+    .applicant-report-intro .eyebrow {
+        display: block !important;
+    }
+
+
+    .applicant-report-summary {
+        display: grid !important;
+        grid-template-columns:
+            repeat(5, 1fr) !important;
+
+        gap: 8px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .applicant-report-summary .report-stat {
+        padding: 10px;
+        border: 1px solid #ddd;
+        box-shadow: none !important;
+    }
+
+
+    .report-stat strong {
+        font-size: 20px;
+    }
+
+
+    .applicant-report-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+
+        margin-bottom: 18px;
+
+        box-shadow: none !important;
+        border: 1px solid #ddd;
+    }
+
+
+    .applicant-report-table-wrap {
+        overflow: visible !important;
+    }
+
+
+    .applicant-report-table-wrap table {
+        min-width: 0 !important;
+    }
+
+
+    .applicant-report-table-wrap th,
+    .applicant-report-table-wrap td {
+        padding: 7px 8px;
+        font-size: 9px;
+    }
+
+
+    .report-section-header {
+        padding: 12px;
+    }
+
+}

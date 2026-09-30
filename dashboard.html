@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Dashboard | Recruitment Management System
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="images/logo3.png"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/frost-ui.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
+
+    <link rel="stylesheet" href="css/quality.css">
+
+</head>
+
+
+<body
+    data-active="Dashboard"
+    class="app-page"
+>
+
+
+    <aside
+        id="appSidebar"
+        class="sidebar glass-panel"
+    ></aside>
+
+
+    <main class="app-main">
+
+
+        <header
+            id="appTopbar"
+            class="topbar glass-panel"
+        ></header>
+
+
+        <section class="page-content dashboard-page-content">
+
+
+            <!-- PAGE INTRO -->
+
+            <div class="dashboard-page-intro">
+
+                <div>
+
+                    <p class="eyebrow">
+                        Stage 10 · Laboratory Activity 23
+                    </p>
+
+                    <h2>
+                        Recruitment Dashboard
+                    </h2>
+
+                    <p>
+                        Visual summary of recruitment activities,
+                        applicants, vacancies, screening,
+                        interviews, and hiring.
+                    </p>
+
+                    <span
+                        id="dashboardUpdated"
+                        class="dashboard-updated"
+                    >
+                        Loading dashboard...
+                    </span>
+
+                </div>
+
+
+                <div class="dashboard-page-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        id="refreshDashboard"
+                    >
+                        ↻ Refresh
+                    </button>
+
+                    <a
+                        class="btn btn-primary"
+                        href="job-postings.html"
+                    >
+                        ＋ New Job Posting
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAIN DASHBOARD CARDS -->
+
+            <section
+                class="dashboard-summary-grid"
+                aria-label="Recruitment summary"
+            >
+
+
+                <article
+                    class="glass-panel dashboard-summary-card"
+                >
+
+                    <div class="dashboard-summary-icon">
+                        ▤
+                    </div>
+
+                    <span>
+                        Open Jobs
+                    </span>
+
+                    <strong id="dashboardOpenJobs">
+                        0
+                    </strong>
+
+                    <small>
+                        Active job postings
+                    </small>
+
+                </article>
+
+
+                <article
+                    class="glass-panel dashboard-summary-card"
+                >
+
+                    <div class="dashboard-summary-icon">
+                        ◎
+                    </div>
+
+                    <span>
+                        Applicants
+                    </span>
+
+                    <strong id="dashboardApplicants">
+                        0
+                    </strong>
+
+                    <small>
+                        Registered applicants
+                    </small>
+
+                </article>
+
+
+                <article
+                    class="glass-panel dashboard-summary-card"
+                >
+
+                    <div class="dashboard-summary-icon">
+                        ◷
+                    </div>
+
+                    <span>
+                        For Interview
+                    </span>
+
+                    <strong id="dashboardForInterview">
+                        0
+                    </strong>
+
+                    <small>
+                        Applications for interview
+                    </small>
+
+                </article>
+
+
+                <article
+                    class="glass-panel dashboard-summary-card"
+                >
+
+                    <div class="dashboard-summary-icon">
+                        ◆
+                    </div>
+
+                    <span>
+                        Hired
+                    </span>
+
+                    <strong id="dashboardHired">
+                        0
+                    </strong>
+
+                    <small>
+                        Successfully hired
+                    </small>
+
+                </article>
+
+
+            </section>
+
+
+            <!-- RECRUITMENT PIPELINE -->
+
+            <section
+                class="glass-panel dashboard-section-card"
+            >
+
+                <div class="dashboard-section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            Recruitment Flow
+                        </p>
+
+                        <h3>
+                            Recruitment Pipeline
+                        </h3>
+
+                        <p>
+                            Track applications from submission
+                            through screening, interview,
+                            selection, and hiring.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="dashboardPipeline"
+                    class="dashboard-pipeline"
+                >
+
+                    <div class="dashboard-loading">
+                        Loading pipeline...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TWO COLUMN CHART AREA -->
+
+            <div class="dashboard-chart-grid">
+
+
+                <!-- APPLICANTS PER JOB -->
+
+                <section
+                    class="glass-panel dashboard-section-card"
+                >
+
+                    <div class="dashboard-section-heading">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                Recruitment Volume
+                            </p>
+
+                            <h3>
+                                Applicants per Job
+                            </h3>
+
+                            <p>
+                                Number of applications received
+                                for each job posting.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="applicantsPerJob"
+                        class="dashboard-bars"
+                    >
+
+                        <div class="dashboard-loading">
+                            Loading...
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- APPLICANTS BY STATUS -->
+
+                <section
+                    class="glass-panel dashboard-section-card"
+                >
+
+                    <div class="dashboard-section-heading">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                Application Status
+                            </p>
+
+                            <h3>
+                                Applicants by Status
+                            </h3>
+
+                            <p>
+                                Distribution of applications
+                                by recruitment status.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="applicantsByStatus"
+                        class="dashboard-bars"
+                    >
+
+                        <div class="dashboard-loading">
+                            Loading...
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- HIRES BY MONTH -->
+
+                <section
+                    class="glass-panel dashboard-section-card"
+                >
+
+                    <div class="dashboard-section-heading">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                Hiring Activity
+                            </p>
+
+                            <h3>
+                                Hires by Month
+                            </h3>
+
+                            <p>
+                                Number of applicants hired
+                                each month.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="hiresByMonth"
+                        class="dashboard-bars"
+                    >
+
+                        <div class="dashboard-loading">
+                            Loading...
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- VACANCIES BY DEPARTMENT -->
+
+                <section
+                    class="glass-panel dashboard-section-card"
+                >
+
+                    <div class="dashboard-section-heading">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                Vacancy Distribution
+                            </p>
+
+                            <h3>
+                                Vacancies by Department
+                            </h3>
+
+                            <p>
+                                Total available positions
+                                grouped by department.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="vacanciesByDepartment"
+                        class="dashboard-bars"
+                    >
+
+                        <div class="dashboard-loading">
+                            Loading...
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SCREENING RESULTS -->
+
+                <section
+                    class="glass-panel dashboard-section-card"
+                >
+
+                    <div class="dashboard-section-heading">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                Screening
+                            </p>
+
+                            <h3>
+                                Screening Results
+                            </h3>
+
+                            <p>
+                                Results recorded during applicant
+                                screening.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="screeningResults"
+                        class="dashboard-bars"
+                    >
+
+                        <div class="dashboard-loading">
+                            Loading...
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- INTERVIEW RESULTS -->
+
+                <section
+                    class="glass-panel dashboard-section-card"
+                >
+
+                    <div class="dashboard-section-heading">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                Interviews
+                            </p>
+
+                            <h3>
+                                Interview Results
+                            </h3>
+
+                            <p>
+                                Results recorded during
+                                applicant interviews.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="interviewResults"
+                        class="dashboard-bars"
+                    >
+
+                        <div class="dashboard-loading">
+                            Loading...
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+            <!-- RECENT APPLICATIONS -->
+
+            <section
+                class="glass-panel dashboard-section-card"
+            >
+
+                <div class="dashboard-section-heading">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            Latest Activity
+                        </p>
+
+                        <h3>
+                            Recent Applications
+                        </h3>
+
+                        <p>
+                            Latest application records from
+                            Supabase.
+                        </p>
+
+                    </div>
+
+                    <a
+                        class="text-link"
+                        href="applications.html"
+                    >
+                        View all
+                    </a>
+
+                </div>
+
+
+                <div class="dashboard-table-wrapper">
+
+                    <table class="dashboard-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Applicant
+                                </th>
+
+                                <th>
+                                    Position
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody
+                            id="recentApplications"
+                        >
+
+                            <tr>
+
+                                <td
+                                    colspan="4"
+                                    class="dashboard-empty"
+                                >
+                                    Loading recent applications...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- TOAST -->
+
+            <div
+                id="toastRoot"
+                class="toast-root"
+                aria-live="polite"
+                aria-atomic="true"
+            ></div>
+
+
+        </section>
+
+    </main>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+    <script src="js/config.js"></script>
+
+    <script src="js/supabase.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/components.js"></script>
+
+    <script src="js/dashboard.js"></script>
+
+
+</body>
+
+</html>

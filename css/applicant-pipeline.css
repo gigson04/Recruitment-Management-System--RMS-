@@ -1,0 +1,1003 @@
+/* =========================================================
+   LABORATORY ACTIVITY 21
+   RECRUITMENT PIPELINE REPORT
+   PAGE-SPECIFIC CSS
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE INTRO
+   ========================================================= */
+
+.pipeline-page-intro {
+    align-items: flex-end;
+}
+
+.pipeline-updated {
+    margin-top: 8px;
+    color: #aeb6be;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   SUMMARY GRID
+   ========================================================= */
+
+.pipeline-summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+}
+
+
+.pipeline-summary-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+
+    padding: 16px;
+}
+
+
+.pipeline-summary-icon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 10px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.055
+    );
+
+    color: #f1f3f5;
+
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+
+.pipeline-summary-card span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #b9c0c7;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.07em;
+}
+
+
+.pipeline-summary-card strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   PIPELINE SECTIONS
+   ========================================================= */
+
+.pipeline-section-card {
+    padding: 18px;
+
+    margin-bottom: 16px;
+}
+
+
+.pipeline-section-heading {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 16px;
+}
+
+
+.pipeline-section-heading h3 {
+    margin: 0;
+
+    color: #f4f5f6;
+
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+
+.pipeline-section-heading p:not(.eyebrow) {
+    margin: 6px 0 0;
+
+    color: #aeb6be;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.pipeline-section-count {
+    flex-shrink: 0;
+
+    color: #b9c0c7;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   OVERALL PIPELINE FLOW
+   ========================================================= */
+
+.pipeline-flow {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+
+.pipeline-flow-stage {
+    position: relative;
+
+    min-width: 0;
+
+    padding: 16px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.035
+    );
+}
+
+
+.pipeline-flow-stage::after {
+    content: "→";
+
+    position: absolute;
+
+    right: -10px;
+
+    top: 50%;
+
+    z-index: 2;
+
+    transform: translateY(-50%);
+
+    color: #9ba4ad;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+.pipeline-flow-stage:last-child::after {
+    display: none;
+}
+
+
+.pipeline-stage-number {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+
+    margin-bottom: 12px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 8px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.06
+    );
+
+    color: #f1f3f5;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.pipeline-flow-stage small {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #aeb6be;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.06em;
+}
+
+
+.pipeline-flow-stage strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+    line-height: 1.1;
+}
+
+
+.pipeline-flow-stage span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #aeb6be;
+
+    font-size: 10px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.pipeline-toolbar {
+    display: flex;
+
+    margin-bottom: 16px;
+}
+
+
+.pipeline-search {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    width: min(
+        420px,
+        100%
+    );
+
+    padding: 0 12px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 10px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.035
+    );
+}
+
+
+.pipeline-search span {
+    color: #c3c9cf;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+.pipeline-search input {
+    width: 100%;
+
+    min-width: 0;
+
+    height: 40px;
+
+    border: 0;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #f2f4f5;
+
+    font: inherit;
+
+    font-size: 12px;
+
+    font-weight: 500;
+}
+
+
+.pipeline-search input::placeholder {
+    color: #929ba4;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   POSITION GRID
+   ========================================================= */
+
+.pipeline-position-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+
+.pipeline-position-card {
+    min-width: 0;
+
+    padding: 16px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 13px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.03
+    );
+}
+
+
+.pipeline-position-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+}
+
+
+.pipeline-position-title {
+    min-width: 0;
+}
+
+
+.pipeline-position-title h4 {
+    margin: 0;
+
+    color: #f2f4f5;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    word-break: break-word;
+}
+
+
+.pipeline-position-title p {
+    margin: 5px 0 0;
+
+    color: #aeb6be;
+
+    font-size: 11px;
+
+    font-weight: 500;
+}
+
+
+.pipeline-job-code {
+    flex-shrink: 0;
+
+    padding: 5px 8px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 7px;
+
+    color: #c1c8ce;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   POSITION PIPELINE
+   ========================================================= */
+
+.position-pipeline {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 5px;
+}
+
+
+.position-stage {
+    min-width: 0;
+
+    padding: 10px 6px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.028
+    );
+}
+
+
+.position-stage strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+
+.position-stage span {
+    display: block;
+
+    color: #aeb6be;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   POSITION FOOTER
+   ========================================================= */
+
+.pipeline-position-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 13px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid var(--line);
+
+    color: #aeb6be;
+
+    font-size: 10px;
+
+    font-weight: 500;
+}
+
+
+.pipeline-progress-text {
+    white-space: nowrap;
+
+    color: #c0c7cd;
+}
+
+
+.pipeline-progress {
+    width: 120px;
+
+    height: 5px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.10
+    );
+}
+
+
+.pipeline-progress-bar {
+    height: 100%;
+
+    width: 0;
+
+    border-radius: inherit;
+
+    background: #d5d9dd;
+
+    transition:
+        width 0.25s ease;
+}
+
+
+/* =========================================================
+   STAGE SUMMARY
+   ========================================================= */
+
+.stage-summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+
+.stage-summary-item {
+    padding: 15px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 11px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.03
+    );
+}
+
+
+.stage-summary-item span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #aeb6be;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.06em;
+}
+
+
+.stage-summary-item strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 23px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.pipeline-empty {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    min-height: 170px;
+
+    padding: 30px;
+
+    border: 1px dashed var(--line);
+
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+
+.pipeline-empty strong {
+    color: #e9ecef;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.pipeline-empty span {
+    margin-top: 5px;
+
+    color: #aeb6be;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   EYEBROW - PIPELINE ONLY
+   ========================================================= */
+
+.pipeline-page-content .eyebrow {
+    color: #b8c0c7;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .pipeline-summary-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+
+    .pipeline-flow {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+
+    .pipeline-flow-stage::after {
+        display: none;
+    }
+
+
+    .stage-summary-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+    .pipeline-summary-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .pipeline-flow {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .pipeline-position-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .position-pipeline {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+
+    .stage-summary-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .pipeline-position-footer {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .pipeline-progress {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 430px) {
+
+    .pipeline-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .pipeline-flow {
+        grid-template-columns: 1fr;
+    }
+
+
+    .position-pipeline {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .stage-summary-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+
+    #appSidebar,
+    #appTopbar,
+    .page-intro-actions,
+    .pipeline-toolbar,
+    #toastRoot {
+        display: none !important;
+    }
+
+
+    .app-main {
+        margin: 0 !important;
+
+        width: 100% !important;
+    }
+
+
+    .pipeline-page-content {
+        padding: 20px !important;
+    }
+
+
+    .pipeline-section-card,
+    .pipeline-summary-card {
+        box-shadow: none !important;
+
+        backdrop-filter: none !important;
+    }
+
+
+    .pipeline-position-grid {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+/* =========================================================
+   PIPELINE TEXT + EMOJI VISIBILITY FIX
+   ========================================================= */
+
+.pipeline-summary-icon {
+    font-family:
+        "Segoe UI Emoji",
+        "Apple Color Emoji",
+        "Noto Color Emoji",
+        sans-serif;
+
+    color: #ffffff;
+
+    font-size: 18px;
+
+    opacity: 1;
+}
+
+
+.pipeline-summary-card span {
+    color: #667085;
+}
+
+
+.pipeline-summary-card strong {
+    color: #172033;
+}
+
+
+.pipeline-section-heading h3 {
+    color: #172033;
+}
+
+
+.pipeline-section-heading p:not(.eyebrow) {
+    color: #667085;
+}
+
+
+.pipeline-section-count {
+    color: #667085;
+}
+
+
+.pipeline-flow-stage small {
+    color: #667085;
+}
+
+
+.pipeline-flow-stage strong {
+    color: #172033;
+}
+
+
+.pipeline-flow-stage span {
+    color: #667085;
+}
+
+
+.pipeline-stage-number {
+    color: #172033;
+}
+
+
+.pipeline-position-title h4 {
+    color: #172033;
+}
+
+
+.pipeline-position-title p {
+    color: #667085;
+}
+
+
+.pipeline-job-code {
+    color: #667085;
+}
+
+
+.position-stage strong {
+    color: #172033;
+}
+
+
+.position-stage span {
+    color: #667085;
+}
+
+
+.pipeline-position-footer {
+    color: #667085;
+}
+
+
+.pipeline-progress-text {
+    color: #667085;
+}
+
+
+.stage-summary-item span {
+    color: #667085;
+}
+
+
+.stage-summary-item strong {
+    color: #172033;
+}
+
+
+.pipeline-empty strong {
+    color: #172033;
+}
+
+
+.pipeline-empty span {
+    color: #667085;
+}
+
+
+.pipeline-page-content .eyebrow {
+    color: #64748b;
+}
+
+
+.pipeline-search span {
+    color: #667085;
+}
+
+
+.pipeline-search input {
+    color: #172033;
+}
+
+
+.pipeline-search input::placeholder {
+    color: #7b8794;
+}

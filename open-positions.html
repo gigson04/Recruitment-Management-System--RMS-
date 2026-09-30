@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Open Positions - Recruitment Management System
+    </title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <!-- =================================================
+         GOOGLE FONT
+         ================================================= -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =================================================
+         PROJECT CSS
+         ================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="css/frost-ui.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+
+    <!-- =================================================
+         OPEN POSITIONS CSS
+         ================================================= -->
+
+    <style>
+
+        /* =================================================
+           PAGE
+           ================================================= */
+
+        .positions-toolbar {
+            display: grid;
+            grid-template-columns:
+                minmax(260px, 2fr)
+                repeat(3, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+
+        /* =================================================
+           POSITION GRID
+           ================================================= */
+
+        .positions-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+
+        /* =================================================
+           POSITION CARD
+           ================================================= */
+
+        .position-card {
+            min-width: 0;
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: 15px;
+            background:
+                rgba(255, 255, 255, 0.18);
+        }
+
+        .position-card h3 {
+            margin: 5px 0 0;
+            color: #c9d0d8;
+            font-size: 17px;
+            line-height: 1.25;
+        }
+
+        .position-card.position-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+
+        /* =================================================
+           TOP
+           ================================================= */
+
+        .position-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .position-top > div {
+            min-width: 0;
+        }
+
+        .job-code {
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+
+        /* =================================================
+           STATUS
+           ================================================= */
+
+        .position-status-open,
+        .position-status-closed {
+            display: inline-flex;
+            align-items: center;
+            flex-shrink: 0;
+            padding: 5px 8px;
+            border-radius: 999px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .position-status-open {
+            background:
+                rgba(37, 134, 90, 0.10);
+            border: 1px solid
+                rgba(37, 134, 90, 0.20);
+            color: #75d3a5;
+        }
+
+        .position-status-closed {
+            background:
+                rgba(181, 71, 71, 0.10);
+            border: 1px solid
+                rgba(181, 71, 71, 0.22);
+            color: #e59a9a;
+        }
+
+        .position-status-expired {
+            display: inline-flex;
+            align-items: center;
+            flex-shrink: 0;
+            padding: 5px 8px;
+            border-radius: 999px;
+            background:
+                rgba(181, 71, 71, 0.10);
+            border: 1px solid
+                rgba(181, 71, 71, 0.22);
+            color: #ff8f8f !important;
+        }
+
+
+        /* =================================================
+           META
+           ================================================= */
+
+        .position-meta {
+            display: grid;
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .position-meta span {
+            min-width: 0;
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.45;
+        }
+
+
+        /* =================================================
+           SUMMARY
+           ================================================= */
+
+        .position-summary {
+            margin: 14px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+
+        /* =================================================
+           ACTIONS
+           ================================================= */
+
+        .position-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .position-actions .btn {
+            flex: 1;
+        }
+
+
+        /* =================================================
+           MODAL
+           ================================================= */
+
+        .position-modal {
+            width: min(760px, 100%);
+            max-width: 760px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+
+        /* =================================================
+           DETAILS
+           ================================================= */
+
+        .details-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .detail-block {
+            min-width: 0;
+            padding: 13px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: #15191d;
+        }
+
+        .detail-full {
+            grid-column: 1 / -1;
+        }
+
+        .detail-block small {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .detail-block strong {
+            color: #c9d0d8;
+            font-size: 13px;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .modal-description {
+            color: #c9d0d8;
+            font-size: 13px;
+            line-height: 1.6;
+            white-space: pre-line;
+            word-break: break-word;
+        }
+
+
+        /* =================================================
+           COUNT
+           ================================================= */
+
+        .position-count {
+            margin-top: 7px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 1000px) {
+
+            .positions-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            .positions-toolbar {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .positions-toolbar {
+                grid-template-columns: 1fr;
+            }
+
+            .positions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .position-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-full {
+                grid-column: auto;
+            }
+
+            .position-actions {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="css/quality.css">
+
+</head>
+
+
+<body
+    data-active="Open Positions"
+    class="app-page"
+>
+
+
+    <!-- =================================================
+         SIDEBAR
+         ================================================= -->
+
+    <aside
+        id="appSidebar"
+        class="sidebar glass-panel"
+    ></aside>
+
+
+    <!-- =================================================
+         MAIN
+         ================================================= -->
+
+    <main class="app-main">
+
+
+        <!-- =================================================
+             TOPBAR
+             ================================================= -->
+
+        <header
+            id="appTopbar"
+            class="topbar glass-panel"
+        ></header>
+
+
+        <!-- =================================================
+             PAGE CONTENT
+             ================================================= -->
+
+        <section class="page-content">
+
+
+            <!-- =================================================
+                 PAGE HEADER
+                 ================================================= -->
+
+            <div class="page-intro">
+
+                <div>
+
+                    <!--<p class="eyebrow">
+                        Laboratory Activity 4
+                    </p>-->
+
+                    <h2>
+                        Open Positions
+                    </h2>
+
+                    <p>
+                        Browse available job opportunities
+                        and view position details.
+                    </p>
+
+                    <div
+                        id="positionCount"
+                        class="position-count"
+                    >
+                        Loading positions...
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FILTERS
+                 ================================================= -->
+
+            <section
+                class="glass-panel section-card"
+            >
+
+                <div class="positions-toolbar">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="search-wrap">
+
+                        <span
+                            class="search-icon"
+                            aria-hidden="true"
+                        >
+                            ⌕
+                        </span>
+
+                        <input
+                            id="positionSearch"
+                            type="search"
+                            placeholder="Search position, job code, or department"
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <!-- DEPARTMENT -->
+
+                    <select
+                        id="departmentFilter"
+                        class="select-control"
+                    >
+
+                        <option value="">
+                            All departments
+                        </option>
+
+                    </select>
+
+
+                    <!-- EMPLOYMENT -->
+
+                    <select
+                        id="employmentFilter"
+                        class="select-control"
+                    >
+
+                        <option value="">
+                            All employment types
+                        </option>
+
+                        <option value="Full-Time">
+                            Full-Time
+                        </option>
+
+                        <option value="Part-Time">
+                            Part-Time
+                        </option>
+
+                        <option value="Contract">
+                            Contract
+                        </option>
+
+                        <option value="Temporary">
+                            Temporary
+                        </option>
+
+                    </select>
+
+
+                    <!-- STATUS -->
+
+                    <select
+                        id="positionStatusFilter"
+                        class="select-control"
+                    >
+
+                        <option value="">
+                            All statuses
+                        </option>
+
+                        <option value="Open">
+                            Open
+                        </option>
+
+                        <option value="Expired">
+                            Expired
+                        </option>
+
+                        <option value="Closed">
+                            Closed
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =================================================
+                     POSITIONS GRID
+                     ================================================= -->
+
+                <div
+                    id="positionsGrid"
+                    class="positions-grid"
+                >
+
+                    <div
+                        class="glass-panel position-card position-empty"
+                    >
+
+                        <div class="table-empty">
+                            Loading available positions...
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- =================================================
+         TOAST
+         ================================================= -->
+
+    <div
+        id="toastRoot"
+        class="toast-root"
+    ></div>
+
+
+    <!-- =================================================
+         DETAILS MODAL
+         ================================================= -->
+
+    <div
+        id="detailsModal"
+        class="modal-backdrop"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal glass-panel position-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="detailsTitle"
+        >
+
+
+            <!-- HEADER -->
+
+            <div class="modal-head">
+
+                <div>
+
+                    <p
+                        id="detailsCode"
+                        class="eyebrow"
+                    >
+                        JOB-001
+                    </p>
+
+                    <h3 id="detailsTitle">
+                        Job Position
+                    </h3>
+
+                </div>
+
+
+                <button
+                    id="closeDetails"
+                    class="icon-button"
+                    type="button"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- BODY -->
+
+            <div id="detailsBody">
+
+                <div class="details-grid">
+
+                    <div class="detail-block">
+
+                        <small>
+                            Department
+                        </small>
+
+                        <strong>
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER -->
+
+            <div
+                class="button-row"
+                style="margin-top:18px;"
+            >
+
+                <button
+                    id="closeDetailsBottom"
+                    class="btn btn-secondary"
+                    type="button"
+                >
+                    Close
+                </button>
+
+
+                <button
+                    id="applyFromDetails"
+                    class="btn btn-primary"
+                    type="button"
+                >
+                    Apply
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SUPABASE
+         ================================================= -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <!-- =================================================
+         PROJECT JAVASCRIPT
+         ================================================= -->
+
+    <script src="js/config.js"></script>
+
+    <script src="js/supabase.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/components.js"></script>
+
+    <!-- IMPORTANT:
+         Use the Open Positions JS here.
+         NOT job-postings.js
+    -->
+
+    <script src="js/open-position.js"></script>
+
+
+</body>
+
+</html>

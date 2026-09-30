@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Job Posting Reports | Recruitment Management System
+    </title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <!-- =====================================================
+         GOOGLE FONT
+         ===================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         MAIN SYSTEM CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/frost-ui.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/responsive.css"
+    >
+
+
+    <!-- =====================================================
+         REPORTS CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/reports.css"
+    >
+
+    <link rel="stylesheet" href="css/quality.css">
+
+</head>
+
+
+<body
+    class="app-page"
+    data-active="Reports"
+>
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside
+        id="appSidebar"
+        class="sidebar glass-panel"
+    ></aside>
+
+
+    <!-- =====================================================
+         MAIN APPLICATION
+         ===================================================== -->
+
+    <main class="app-main">
+
+
+        <!-- =================================================
+             TOPBAR
+             ================================================= -->
+
+        <header
+            id="appTopbar"
+            class="topbar glass-panel"
+        ></header>
+
+
+        <!-- =================================================
+             PAGE CONTENT
+             ================================================= -->
+
+        <section class="page-content">
+
+
+            <!-- =================================================
+                 PAGE INTRO
+                 ================================================= -->
+
+            <div class="page-intro report-page-intro">
+
+                <div>
+
+                    <p class="eyebrow">
+                        Laboratory Activity 19
+                    </p>
+
+                    <h2>
+                        Job Posting Reports
+                    </h2>
+
+                    <p>
+                        Generate job posting reports covering
+                        vacancies, applicants, and hiring results.
+                    </p>
+
+                </div>
+
+
+                <div class="report-actions">
+
+                    <button
+                        id="refreshReportButton"
+                        type="button"
+                        class="btn btn-secondary"
+                    >
+                        Refresh
+                    </button>
+
+
+                    <button
+                        id="printReportButton"
+                        type="button"
+                        class="btn btn-primary"
+                    >
+                        Print Report
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SUMMARY CARDS
+                 ================================================= -->
+
+            <section class="report-summary">
+
+
+                <!-- OPEN VACANCIES -->
+
+                <div class="report-stat glass-panel">
+
+                    <small>
+                        Open Vacancies
+                    </small>
+
+                    <strong id="openVacanciesCount">
+                        0
+                    </strong>
+
+                    <span>
+                        Available positions
+                    </span>
+
+                </div>
+
+
+                <!-- CLOSED VACANCIES -->
+
+                <div class="report-stat glass-panel">
+
+                    <small>
+                        Closed Vacancies
+                    </small>
+
+                    <strong id="closedVacanciesCount">
+                        0
+                    </strong>
+
+                    <span>
+                        Closed job postings
+                    </span>
+
+                </div>
+
+
+                <!-- TOTAL APPLICANTS -->
+
+                <div class="report-stat glass-panel">
+
+                    <small>
+                        Total Applicants
+                    </small>
+
+                    <strong id="totalApplicantsCount">
+                        0
+                    </strong>
+
+                    <span>
+                        Submitted applications
+                    </span>
+
+                </div>
+
+
+                <!-- FILLED VACANCIES -->
+
+                <div class="report-stat glass-panel">
+
+                    <small>
+                        Filled Vacancies
+                    </small>
+
+                    <strong id="filledVacanciesCount">
+                        0
+                    </strong>
+
+                    <span>
+                        Successfully hired
+                    </span>
+
+                </div>
+
+
+                <!-- UNFILLED VACANCIES -->
+
+                <div class="report-stat glass-panel">
+
+                    <small>
+                        Unfilled Vacancies
+                    </small>
+
+                    <strong id="unfilledVacanciesCount">
+                        0
+                    </strong>
+
+                    <span>
+                        Remaining openings
+                    </span>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- =================================================
+                 JOB POSTING SUMMARY
+                 ================================================= -->
+
+            <section
+                class="glass-panel section-card report-section"
+            >
+
+                <div class="report-section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            Vacancy Overview
+                        </p>
+
+                        <h3>
+                            Job Posting Summary
+                        </h3>
+
+                        <p>
+                            Applicants, vacancies, and hiring
+                            results for every job posting.
+                        </p>
+
+                    </div>
+
+
+                    <span
+                        id="jobReportCount"
+                        class="report-count"
+                    >
+                        0 records
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrap report-table-wrap">
+
+                    <table id="jobReportsTable">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Position
+                                </th>
+
+                                <th>
+                                    Department
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Vacancies
+                                </th>
+
+                                <th>
+                                    Applicants
+                                </th>
+
+                                <th>
+                                    Hired
+                                </th>
+
+                                <th>
+                                    Unfilled
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td
+                                    colspan="7"
+                                    class="table-empty"
+                                >
+                                    Loading reports...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 OPEN VACANCIES
+                 ================================================= -->
+
+            <section
+                class="glass-panel section-card report-section"
+            >
+
+                <div class="report-section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            Open Positions
+                        </p>
+
+                        <h3>
+                            Open Vacancies
+                        </h3>
+
+                        <p>
+                            Job postings that still have
+                            available vacancies.
+                        </p>
+
+                    </div>
+
+
+                    <span
+                        id="openVacanciesReportCount"
+                        class="report-count"
+                    >
+                        0 records
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrap report-table-wrap">
+
+                    <table id="openVacanciesTable">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Job Code
+                                </th>
+
+                                <th>
+                                    Position
+                                </th>
+
+                                <th>
+                                    Department
+                                </th>
+
+                                <th>
+                                    Remaining
+                                </th>
+
+                                <th>
+                                    Closing Date
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="table-empty"
+                                >
+                                    Loading...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 CLOSED VACANCIES
+                 ================================================= -->
+
+            <section
+                class="glass-panel section-card report-section"
+            >
+
+                <div class="report-section-header">
+
+                    <div>
+
+                        <p class="eyebrow">
+                            Closed Positions
+                        </p>
+
+                        <h3>
+                            Closed Vacancies
+                        </h3>
+
+                        <p>
+                            Job postings whose recruitment
+                            period has ended or vacancies
+                            have been filled.
+                        </p>
+
+                    </div>
+
+
+                    <span
+                        id="closedVacanciesReportCount"
+                        class="report-count"
+                    >
+                        0 records
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrap report-table-wrap">
+
+                    <table id="closedVacanciesTable">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Job Code
+                                </th>
+
+                                <th>
+                                    Position
+                                </th>
+
+                                <th>
+                                    Department
+                                </th>
+
+                                <th>
+                                    Vacancies
+                                </th>
+
+                                <th>
+                                    Closing Date
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="table-empty"
+                                >
+                                    Loading...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         TOAST
+         ===================================================== -->
+
+    <div
+        id="toastRoot"
+        class="toast-root"
+    ></div>
+
+
+    <!-- =====================================================
+         SUPABASE
+         ===================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <!-- =====================================================
+         SYSTEM JAVASCRIPT
+         ===================================================== -->
+
+    <script src="js/config.js"></script>
+
+    <script src="js/supabase.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/components.js"></script>
+
+
+    <!-- =====================================================
+         LAB 19 REPORTS JAVASCRIPT
+         ===================================================== -->
+
+    <script src="js/reports.js"></script>
+
+
+</body>
+
+</html>
